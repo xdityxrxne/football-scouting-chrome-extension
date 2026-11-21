@@ -1,15 +1,17 @@
-# ⚽ Player Extractor
+# ⚽ Football Scouting Chrome Extension: Player Extractor
 
-**Turns Playmakerstats player pages into a clean, de-duplicated Excel scouting database with one click per player.**
+**A Google Chrome extension and Python pipeline. One click on a Playmakerstats player page saves the player into a clean, de-duplicated Excel scouting database.**
 
-[![CI](https://github.com/xdityxrxne/football-player-extractor/actions/workflows/ci.yml/badge.svg)](https://github.com/xdityxrxne/football-player-extractor/actions/workflows/ci.yml)
+[![CI](https://github.com/xdityxrxne/football-scouting-chrome-extension/actions/workflows/ci.yml/badge.svg)](https://github.com/xdityxrxne/football-scouting-chrome-extension/actions/workflows/ci.yml)
+![Chrome Extension](https://img.shields.io/badge/Chrome%20Extension-Manifest%20V3-4285F4?logo=googlechrome&logoColor=white)
 ![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue)
 ![Tests](https://img.shields.io/badge/tests-46%20passing-brightgreen)
 ![Lint](https://img.shields.io/badge/lint-ruff-261230)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 Built for a UK women's football scouting team: non-technical users who were copying player
-profiles into spreadsheets by hand. The tool parses a player page, normalises every field
+profiles into spreadsheets by hand. Scouts browse as usual and click **Save player to Spotter** in
+the Chrome toolbar. The Python back end parses the page, normalises every field
 (positions to codes, heights to cm, seasons to `YYYY/YY`, …), flags anything uncertain for review
 and upserts it into a styled Excel workbook. No data is ever guessed or duplicated.
 
@@ -26,6 +28,7 @@ and upserts it into a styled Excel workbook. No data is ever guessed or duplicat
 
 | | |
 |---|---|
+| 🧭 **Chrome extension (Manifest V3)** | A toolbar button captures the page the scout is viewing, posts it to a localhost Flask service and shows an in-page toast ("Saved: Lucy Bronze (1 field missing)"). It uses the minimal `activeTab` + `scripting` permissions. |
 | 🧩 **Pure, tested parser** | `parse_player(html, url)` is side-effect free and tested against 5 real saved player pages and 2 squad pages, field by field. |
 | 🔁 **Idempotent upsert** | Stable `SP-00001` IDs; re-saving a player updates the row, replaces their club history and never creates duplicates. |
 | 🛡️ **Never guesses** | Missing data stays blank and is listed in *Missing fields*; ambiguous values (e.g. a generic "Defender") are flagged *Needs review* with the raw value in Notes. |

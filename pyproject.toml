@@ -1,5 +1,5 @@
 [project]
-name = "player-extractor"
+name = "football-scouting-chrome-extension"
 version = "1.0.0"
 description = "Human-in-the-loop pipeline that turns Playmakerstats player pages into a clean, de-duplicated Excel scouting database."
 readme = "README.md"
