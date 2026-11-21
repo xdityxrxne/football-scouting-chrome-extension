@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Runtime data created on the user's PC
+players.xlsx
+backups/
+cache/
+logs/
+browser_profile/
+
+# Personal / unrelated files kept in the working folder
+upwork-profile-draft.md
+mlops-pipeline-thumbnail.svg
+
+# OS / editor
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/

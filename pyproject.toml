@@ -1,0 +1,43 @@
+[project]
+name = "player-extractor"
+version = "1.0.0"
+description = "Human-in-the-loop pipeline that turns Playmakerstats player pages into a clean, de-duplicated Excel scouting database."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.11,<3.14"
+keywords = ["web-scraping", "football", "scouting", "excel", "streamlit", "chrome-extension"]
+dependencies = [
+    "beautifulsoup4==4.13.4",
+    "lxml==5.3.0",
+    "openpyxl==3.1.5",
+    "playwright==1.49.1",
+    "streamlit==1.41.1",
+    "flask==3.1.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==8.3.4", "ruff==0.8.4"]
+
+[tool.setuptools]
+packages = ["player_extractor"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = ["error::DeprecationWarning:bs4.*"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+extend-exclude = [".venv", "browser_profile", "cache", "backups", "logs"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"scripts/*.py" = ["E402"]       # sys.path shim must run before the package import
+"tests/*.py" = ["E402"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["player_extractor"]

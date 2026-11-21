@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Save player to Spotter",
+  "version": "1.0",
+  "description": "On a Playmakerstats player page, click the button to save the player into your Spotter Excel file.",
+  "action": {
+    "default_title": "Save player to Spotter"
+  },
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": [
+    "http://127.0.0.1:8765/*",
+    "https://www.playmakerstats.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
